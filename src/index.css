@@ -1,0 +1,135 @@
+.centerized{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.Title{
+  color: green;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+
+ 
+}
+
+.HeaderImage{
+  width: 100%;
+  height: 400px;
+  background-image: url("../public/image4.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  margin-bottom: 0px;
+}
+
+.HomePageDetails{
+  background-color:rgb(244, 255, 244);
+  padding: 0px 40px;
+  padding-top: 40px;
+  margin-bottom: 0px;
+}
+
+.HomePageInfo{
+  margin: 20px 0px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+}
+
+.SiteFeature{
+  display: flex;
+  flex-wrap: wrap;
+  margin: 30px 20px;
+  margin-bottom: 0px;
+
+}
+
+.features{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  height: 300px;
+  padding: 70px;
+  border-bottom: 1px solid gray;
+ 
+}
+
+.Icon{
+  margin: 10px;
+  width: 50px;
+  height: 50px;
+}
+
+.featuresInfo{
+  margin: 10px 20px;
+
+}
+
+.ContactUs{
+  height: 200px;
+  width: 100%;
+  background-color: rgb(25, 144, 25);
+  margin-top: 0px;
+}
+
+.Container{
+  height: 100vh;
+  background-color: rgb(170, 243, 170);
+}
+
+.FormDiv{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 450px;
+  border: 0;
+  background-color: white;
+}
+
+.FormTitle{
+  width:300px ;
+  display: flex;
+  justify-content: center;
+  color: green;
+  margin: 20px 10px;
+}
+
+.NavBtn{
+  border: 0;
+  background-color: green;
+  color:  white;
+  margin: 0 20px;
+}
+
+
+.NavBtn-Div{
+  border: 1px solid white;
+  height: 40px;
+}
+
+.profileIcon{
+  width: 40px;
+  height: 40px;
+  margin: 0 30px;
+}
+
+.FormBtn{
+  width: 280px;
+  height: 34px;
+  margin: 20px 10px ;
+  border: 0;
+  background-color: green;
+  color: white;
+}
+
+.FormBtn2{
+  color: green;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.InnerDiv{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+
