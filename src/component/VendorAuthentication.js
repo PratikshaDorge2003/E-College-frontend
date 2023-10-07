@@ -5,7 +5,7 @@ import {
     Box,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { Link } from 'react-router-dom';
+
 
 function VendorAuthentication() {
     const [firstName, setfirstName] = useState("");
@@ -19,13 +19,13 @@ function VendorAuthentication() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [page, setPage] = useState("SignUp")
 
-    const Submit = () => {
+    // const Submit = () => {
 
-    }
+    // }
 
-    const handleClose = () => {
+    // const handleClose = () => {
 
-    }
+    // }
 
     const ChangePageFunction2 = () => {
         setPage("LogIn");
@@ -54,7 +54,7 @@ function VendorAuthentication() {
     return (
         <div>
 
-            <div className='Container centerized'>
+            <div>
                 <Box
                     component="form"
                     sx={{

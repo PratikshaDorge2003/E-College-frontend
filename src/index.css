@@ -8,7 +8,6 @@
 .Title{
   color: green;
   font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
-
  
 }
 
@@ -23,7 +22,7 @@
 }
 
 .HomePageDetails{
-  background-color:rgb(244, 255, 244);
+  background-color:#f6f7f9;
   padding: 0px 40px;
   padding-top: 40px;
   margin-bottom: 0px;
@@ -60,15 +59,43 @@
 
 .featuresInfo{
   margin: 10px 20px;
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
 
 }
 
 
 .ContactUs{
+  display:flex;
+  justify-content: right;
+  align-items: center;
   height: 200px;
   width: 100%;
-  background-color: rgb(25, 144, 25);
+  background-color: rgb(54, 52, 52);
   margin-top: 0px;
+}
+
+.ContactUsInfo{
+  margin: 120px;
+}
+
+.ContactUsInfo h5{
+  margin-left: 60px;
+}
+
+.ContactList{
+  display: flex;
+  margin-top: 10px;
+  list-style: none;
+ 
+}
+
+.ContactList li{
+  width: 50px;
+}
+
+.ContactList li img{
+  width: 30px;
+  height: 25px;
 }
 
 .Container{
@@ -133,4 +160,95 @@
   justify-content: center;
 }
 
+.VendorPage{
+  width: 100%;
+  background-color: rgb(255, 255, 255);
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+}
 
+.Container2{
+  display: flex;
+  background-color: rgb(170, 243, 170); 
+  height: 100vh;
+}
+
+.leftDiv{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 70px;
+
+}
+
+.leftDiv h4{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+  font-weight: 600;
+  
+  
+
+}
+.leftDiv h6{
+  font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+
+  
+}
+.rightDiv{
+  width: 50%;
+}
+
+.ProcessDetails{
+  
+  background-color: #f6f7f9;
+  height: 230px;
+  width: 88%;
+  margin: 15px;
+  border-radius: 10px;
+  display: flex;
+
+}
+
+.Process-steps{
+  width: 25%;
+  height: 100%;
+}
+
+.topDiv{
+  height: 40%;
+  display: flex;
+  width: 100%;
+  
+}
+
+.number{
+  height:40px;
+  width: 40px;
+  background-color: green;
+  margin: 2px;
+  color: whitesmoke;
+  border-radius: 100%;
+  font-weight: 500;
+  margin: 20px;
+  
+}
+.line{
+  width: 70%;
+}
+
+.line div{
+   height: 2px;
+   width: 100%;
+   background-color: green;
+}
+
+.bottomDiv{
+  height: 60%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.bottomDiv p{
+  padding: 10px 30px;
+  margin-left: 30px;
+}

@@ -1,7 +1,7 @@
 
 import './App.css';
 import React from 'react'
-import { useState } from 'react';
+
 
 import {
   BrowserRouter as Router,
@@ -11,16 +11,13 @@ import {
 
 
 import HomePage from './component/HomePage';
-import Navbar from './component/Navbar1';
-import VendorLogin from './component/VendorAuthentication';
+import VendorHomePage from './component/VendorHomePage';
 import UserLogin from './component/UserAuthentication'
 
 
  const App =()=> {
 
-  const[displayContent,SetdisplayContent]=useState({
-    display:"block"
-   })
+ 
     return (
 
       <div>
@@ -29,8 +26,8 @@ import UserLogin from './component/UserAuthentication'
         
                  
           <Routes>
-            <Route exact path="/" element={ <HomePage SetdisplayContent={SetdisplayContent}/>}/>
-            <Route exact path="/vendor-Authenctication" element={ <VendorLogin/>}/>
+            <Route exact path="/" element={ <HomePage />}/>
+            <Route exact path="/vendor/HomePage" element={ <VendorHomePage/>}/>
             <Route exact path="/profile" element={ <UserLogin/>}/>
           </Routes>
         </Router>

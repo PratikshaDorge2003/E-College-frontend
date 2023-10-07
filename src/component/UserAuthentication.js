@@ -5,7 +5,7 @@ import {
     Box,
 } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import { Link } from 'react-router-dom';
+
 
 function UserAuthentication() {
     const [firstName, setfirstName] = useState("");
@@ -16,13 +16,8 @@ function UserAuthentication() {
     const [confirmPassword, setConfirmPassword] = useState("");
     const [page, setPage] = useState("SignUp")
 
-    const Submit = () => {
+  
 
-    }
-
-    const handleClose = () => {
-
-    }
 
     const ChangePageFunction2 = () => {
         setPage("LogIn");

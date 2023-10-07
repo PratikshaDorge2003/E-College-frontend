@@ -16,7 +16,7 @@ const Navbar = (props) => {
 
     const navigate = useNavigate();
     const navigateVendor=()=>{
-        navigate("/vendor-Authenctication");
+        navigate("/vendor/HomePage");
     }
 
     return (

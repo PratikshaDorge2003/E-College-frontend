@@ -1,9 +1,8 @@
 import React from 'react'
 import Navbar from './Navbar1';
+import { Link } from 'react-router-dom';
 
 const Register = (props) => {
-
-
 
     return (
 
@@ -14,7 +13,7 @@ const Register = (props) => {
                 <div className='centerized Title'><h2>Welcome To E-Waste Central</h2></div>
                 <p className='HomePageInfo'>The surge e-waste poses a host of pressing issues with
                     far-reaching consequences.
-                    Improper disposal of electronic devices often results in hazardous environment.
+                    Improper disposal of electronic devices often results in hazardous situations.
                     Municipalities and recycling facilities struggle to cope with the sheer volume
                     of discarded electronics,
                     leading to inadequate disposal methods that further harm the environment.</p>
@@ -30,25 +29,25 @@ const Register = (props) => {
                 </div>
                 <div className='SiteFeature'>
                        <div className='features centerized '>
-                        <img className="Icon" src="/leafIcon.png"></img>
+                        <img className="Icon" src="/leafIcon.png" alt="Leaft Icon"></img>
                         <h5>Green Gurantee</h5>
                         <p className='featuresInfo'>Our prime objective is to reduce the environmental impact posed by your e-waste. 
                         Thus, we establish practices to ensure safe recycling and effective disposal</p>
                        </div>
                        <div className='features centerized'>
-                       <img className="Icon" src="/cashIcon.png"></img>
+                       <img className="Icon" src="/cashIcon.png" alt="Cash Icon"></img>
                        <h5>Right Price For Right Scrap</h5>
                        <p className='featuresInfo'>Don't settle for low prices because you want your property clean. Perfect platform for proper e-waste disposal and to get the right price for the right scrap.</p>
                        </div>
                        <div className='features centerized '>
-                       <img className="Icon" src="/TickMarkIcon.png"></img>
+                       <img className="Icon" src="/TickMarkIcon.png" alt="tickmark Icon"></img>
                        <h5>Comfort and Covenience</h5>
-                       <p>Schedule a pickup of your convenience. Ensure timely scrap removal from your home or office. Covenient way to sell and buy the scrap</p>
+                       <p className='featuresInfo'>Schedule a pickup of your convenience. Ensure timely scrap removal from your home or office. Covenient way to sell and buy the scrap</p>
                        </div>
                        <div className='features centerized'>
-                       <img className="Icon" src="/Security.png"></img>
+                       <img className="Icon" src="/Security.png" alt="security icon"></img>
                         <h5>Security Measures</h5>
-                        <p>We protect your data and ensures safety. All the information you share with us is encrypted and cannot be intercepted by malicious third parties.</p>
+                        <p className='featuresInfo'>We protect your data and ensures safety. All the information you share with us is encrypted and cannot be intercepted by malicious third parties.</p>
                        </div>
                       
                 </div>
@@ -57,7 +56,16 @@ const Register = (props) => {
                 </div>
 
                 <div className='ContactUs'>
-               
+                   <div className='ContactUsInfo'>
+                    <h5 style={{color:"white"}}>Contact Us :</h5>
+                    <ul className='ContactList'>
+                        <li><Link><img className='profileIcon' src="./instagram.png" alt="Instragram logo" /></Link></li>
+                        <li><Link><img className='profileIcon' src="./linkedIn.png" alt="LinkedIn logo" /></Link></li>
+                        <li><Link><img className='profileIcon' src="./twitter.png" alt="Twitter logo" /></Link></li>
+                        
+                        <li><Link><img className='profileIcon' src="./facebook2.png" alt=" Facebook logo" /></Link></li>
+                    </ul>
+                   </div>
 
 
             </div>
