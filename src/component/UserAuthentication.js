@@ -24,7 +24,7 @@ function UserAuthentication() {
 
     }
 
-    const LogInFunction = () => {
+    const ChangePageFunction2 = () => {
         setPage("LogIn");
         setfirstName('');
         setlastName('');
@@ -36,7 +36,7 @@ function UserAuthentication() {
 
     }
 
-    const SIGNUPFunction = () => {
+    const ChangePageFunction1 = () => {
         setPage("SignUp");
         setfirstName('');
         setlastName('');
@@ -129,7 +129,7 @@ function UserAuthentication() {
                                     onChange={(event) => setConfirmPassword(event.target.value)}
                                 />
                                 
-                                <div className='centerized'><p>Aready had an account ?&nbsp; </p><p className='FormBtn2' onClick={LogInFunction}> Log In</p></div>
+                                <div className='centerized'><p>Aready had an account ?&nbsp; </p><p className='FormBtn2' onClick={ChangePageFunction2}> Log In</p></div>
                                 <button className='FormBtn'>Sign Up</button>
                             </div>
                         )}
@@ -185,7 +185,7 @@ function UserAuthentication() {
                                     required
                                     onChange={(event) => setConfirmPassword(event.target.value)}
                                 />
-                                <div className='centerized'><p>Create New Account&nbsp;&nbsp; </p><p className='FormBtn2' onClick={SIGNUPFunction}> Sign In</p></div>
+                                <div className='centerized'><p>Create New Account&nbsp;&nbsp; </p><p className='FormBtn2' onClick={ChangePageFunction1}> Sign In</p></div>
                                 <button className='FormBtn'>Log In</button>
                             </div>
 

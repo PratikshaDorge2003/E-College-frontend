@@ -1,8 +1,4 @@
 import React from 'react'
-import { useState } from 'react';
-import { Link } from 'react-router-dom'
-import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
 import Navbar from './Navbar1';
 
 const Register = (props) => {
@@ -33,7 +29,7 @@ const Register = (props) => {
                 <div>
                 </div>
                 <div className='SiteFeature'>
-                       <div className='features centerized'>
+                       <div className='features centerized '>
                         <img className="Icon" src="/leafIcon.png"></img>
                         <h5>Green Gurantee</h5>
                         <p className='featuresInfo'>Our prime objective is to reduce the environmental impact posed by your e-waste. 
@@ -44,7 +40,7 @@ const Register = (props) => {
                        <h5>Right Price For Right Scrap</h5>
                        <p className='featuresInfo'>Don't settle for low prices because you want your property clean. Perfect platform for proper e-waste disposal and to get the right price for the right scrap.</p>
                        </div>
-                       <div className='features centerized'>
+                       <div className='features centerized '>
                        <img className="Icon" src="/TickMarkIcon.png"></img>
                        <h5>Comfort and Covenience</h5>
                        <p>Schedule a pickup of your convenience. Ensure timely scrap removal from your home or office. Covenient way to sell and buy the scrap</p>
