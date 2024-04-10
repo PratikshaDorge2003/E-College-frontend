@@ -1,15 +1,17 @@
 import React from 'react'
-import VendorAuthentication from './VendorAuthentication'
+import ProfAuthentication from './ProfAuthentication'
 
-function VendorHomePage() {
+
+const ProfessorHomePage=React.memo(()=>{
+
   return (
     <div>
       <div className='Container2'>
         <div className='leftDiv centerized'>
-          <h4 >Why Vendors Love E-Waste Central </h4>
-          <h6>All the benefits that come by buying E-scrap from our website are designed to help you grow more, and make it easier to grow your business</h6>
+          <h4 >Who Should Register? </h4>
+          <h6>Only professor with valid professor IDs issued by GECCS(Chhatrapati Sambhajinagar Government College of Engineering) are permitted to register. Please ensure your credentials are accurate and up-to-date before proceeding with registration</h6>
         </div>
-        <div className='rightDiv centerized'> <VendorAuthentication /></div>
+        <div className='rightDiv centerized'> <ProfAuthentication  /></div>
 
       </div>
       <div className='VendorPage centerized'>
@@ -24,7 +26,7 @@ function VendorHomePage() {
             </div>
             <div className='bottomDiv centerized'>
               <h5>Create an Account</h5>
-              <p>All you need is government authorized vendors license to get started</p>
+              <p> Fill out the required fields accurately to create your admin account</p>
 
             </div>
 
@@ -38,8 +40,8 @@ function VendorHomePage() {
 
             </div>
             <div className='bottomDiv centerized'>
-              <h5>Respond to Users</h5>
-              <p>Respond to requests from users who provide e-waste details </p>
+              <h5>Verify ID</h5>
+              <p>You will be prompted to verify your professor ID issued by GECCS </p>
 
             </div>
 
@@ -53,8 +55,8 @@ function VendorHomePage() {
 
             </div>
             <div className='bottomDiv centerized'>
-              <h5>Get E-waste</h5>
-              <p>Pickup the e-waste material from users designated location  </p>
+              <h5>Account Verification</h5>
+              <p>Admin will verify the authenticity of your credentials</p>
             </div>
 
           </div>
@@ -64,8 +66,8 @@ function VendorHomePage() {
 
             </div>
             <div className='bottomDiv centerized'>
-              <h5>Service Agreement</h5>
-              <p>Website charges vendor a percentage of extracted metal value </p>
+              <h5>Confirmation and Access</h5>
+              <p> You will receive a confirmation message and admin can now access features </p>
 
             </div>
 
@@ -75,6 +77,6 @@ function VendorHomePage() {
       </div>
     </div>
   )
-}
+});
 
-export default VendorHomePage
+export default ProfessorHomePage

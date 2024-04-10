@@ -7,7 +7,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { useNavigate } from 'react-router-dom';
 
-import '../index.css';
+import '../../index.css';
 
 
 
@@ -15,19 +15,24 @@ import '../index.css';
 const Navbar = (props) => {
 
     const navigate = useNavigate();
-    const navigateVendor=()=>{
-        navigate("/vendor/HomePage");
+    const navigateAdmin=()=>{
+        navigate("/admin/authentication");
+    }
+
+    const navigateProfessor=()=>{
+        navigate("/professor/authentication");
     }
 
     return (
         <Box sx={{ flexGrow: 1 }} >
-            <AppBar position="static" sx={{ backgroundColor: 'green' }}>
+            <AppBar position="static" sx={{ backgroundColor: '#0aa8ad' }}>
                 <Toolbar >
                     <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                        E - Waste  Central
+                       GECCS
                     </Typography>
-                    <div className='NavBtn-Div centerized'><button className='NavBtn' onClick={navigateVendor}>Become a vendor</button></div>
-                    <div className="centerized"><Link to="/profile"><img className='profileIcon' src="./profile2.png" alt="" /></Link></div>
+                    <div className='NavBtn-Div centerized'><button className='NavBtn' onClick={navigateAdmin}>Admin Login</button></div>
+                    <div className='NavBtn-Div centerized'><button className='NavBtn' onClick={navigateProfessor}>Professor Registration</button></div>
+
 
                 </Toolbar>
             </AppBar>
