@@ -2,7 +2,77 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
 
+.fileContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+  width: 80%;
+  background-color: #ffffffec;
+}
+
+.notice{
+  height: 80px;
+  width: 80%;
+  background-color: rgba(14, 93, 136, 0.7);
+  color: #ffffff;
+  margin-bottom: 50px;
+}
+
+.fileBtn{
+  width: 300px;
+  border: 0;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.506);
+  color: white;
+  margin: 20px;
+}
+
+.fileBtn2{
+  width: 300px;
+  border: 0;
+  height: 40px;
+  background-color: rgba(9, 112, 167, 0.502);
+  color: white;
+  margin: 50px;
+}
+
+.exitBtn{
+  border-radius: 100%;
+  margin: 10px;
+  border: 0;
+  background-color: gray;
+  color: #ffffff;
+  width: 40px;
+  height: 40px;
+}
+
+.documentsContainer{
+  background-color:rgb(62, 60, 60);
+  flex-direction: column;
+  margin: 2px;
+}
+
+.documentsContainer2{
+  background-color:#d4cfcfec;
+  flex-direction: column;
+  margin: 0px 2px;
+}
+
+
+.docTitle{
+  margin: 20px;
+font-family:'Times New Roman', Times, serif;
+color: white;
+
+}
+.documents{
+  color: rgb(255, 255, 255);
+  margin-right: 10px;
+  
 }
 
 .heading{
