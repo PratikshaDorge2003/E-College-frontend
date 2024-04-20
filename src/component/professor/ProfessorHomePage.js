@@ -37,7 +37,6 @@ const ProfessorHomePage=React.memo(()=>{
               <div className='line centerized'>
                 <div></div>
               </div>
-
             </div>
             <div className='bottomDiv centerized'>
               <h5>Verify ID</h5>

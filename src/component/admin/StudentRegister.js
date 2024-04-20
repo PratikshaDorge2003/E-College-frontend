@@ -43,6 +43,7 @@ const [messageApi, contextHolder] = message.useMessage();
     DOB: {
       value: null,
       formattedValue: " ",
+      error: false,
     },
     mobile: {
       value: '',
@@ -76,6 +77,8 @@ const [messageApi, contextHolder] = message.useMessage();
     },
     Email: {
       value: '',
+      error: false,
+      errorMessage: 'Enter email ID'
     },
     FatherLastName: {
       value: '',
@@ -102,10 +105,12 @@ const [messageApi, contextHolder] = message.useMessage();
       value: '',
     },
     Gender: {
-      value: 'Male',
+      value: '',
+      error: false,
+      errorMessage: 'Enter Gender'
     },
-    MarriageStatus: {
-      value: 'Single',
+    Department: {
+      value: '6',
     },
     PhysicalDisability: {
       value: 'No',
@@ -168,9 +173,8 @@ const [messageApi, contextHolder] = message.useMessage();
   const Submit=async(event)=>{
     event.preventDefault();
 
-    if (!formValues.firstName.value || !formValues. RegistrationId.value ||  !formValues.SR_ID.value || !formValues.mobile.value || !formValues.FatherFirstName.value
-      || !formValues.MotherFirstName.value || !formValues.GovtId.value ||
-      !isDateValid(formValues.AdmissionDate.formattedValue)) {
+    if (!formValues.firstName.value  || !formValues.mobile.value || !formValues.FatherFirstName.value
+      || !formValues.MotherFirstName.value || !formValues.Gender.value||  !formValues.GovtId.value ||!formValues.DOB.formattedValue || !formValues.Email.value)  {
       const formFields = Object.keys(formValues);
       let newFormValues = { ...formValues }
 
@@ -192,7 +196,7 @@ const [messageApi, contextHolder] = message.useMessage();
 
       }
       setFormValues(newFormValues)
-      console.log(formValues)
+      
     }
     else {
       const formData = {
@@ -215,7 +219,7 @@ const [messageApi, contextHolder] = message.useMessage();
         place: formValues.place.value,
         pinCode: formValues.PinCode.value,
         gender: formValues.Gender.value,
-        marriageStatus: formValues.MarriageStatus.value,
+        department: formValues.Department.value,
         physicalDisability: formValues.PhysicalDisability.value,
         caste: formValues.Caste.value,
         religion: formValues.Religion.value,
@@ -284,10 +288,9 @@ const [messageApi, contextHolder] = message.useMessage();
                   type="text"
                   label="Registration ID"
                   name="RegistrationId"
-                  required
                   value={formValues.RegistrationId.value}
-                  error={formValues.RegistrationId.error}
-                  helperText={formValues.RegistrationId.error && formValues.RegistrationId.errorMessage}
+                  disabled
+                  style={{backgroundColor:"rgb(238, 232, 232)", color:"white"}}
                   variant="outlined"
                   margin="dense"
                   onChange={handleChange}
@@ -298,8 +301,8 @@ const [messageApi, contextHolder] = message.useMessage();
                   label="Enrollment Number"
                   name="SR_ID"
                   value={formValues.SR_ID.value}
-                  error={formValues.SR_ID.error}
-                  helperText={formValues.SR_ID.error && formValues.SR_ID.errorMessage}
+                  disabled
+                  style={{backgroundColor:"rgb(238, 232, 232)", color:"white"}}
                   type="text"
                   variant="outlined"
                   required
@@ -368,16 +371,17 @@ const [messageApi, contextHolder] = message.useMessage();
                     value={formValues.DOB.value}
                     label="DOB"
                     onError={(newError) => setError(newError)}
+
                     slotProps={{
                       textField: {
-                        error: error === 'invalidDate' || !formValues.AdmissionDate.value,
+                        error: error === 'invalidDate' || formValues.DOB.error,
                       },
                     }}
                     format='DD/MM/YYYY'
                   onChange={(date) => {
                     setFormValues((prevValues) => ({
                       ...prevValues,
-                      AdmissionDate: {
+                      DOB: {
                         value: date ? date : '',
                         formattedValue: date ? date.format('DD/MM/YYYY') : '',
                       },
@@ -401,6 +405,9 @@ const [messageApi, contextHolder] = message.useMessage();
                     type="text"
                     variant="outlined"
                     value={formValues.Gender.value}
+                    error={formValues.Gender.error}
+                    helperText={formValues.Gender.error && formValues.Gender.errorMessage}
+
                     onChange={handleChange}
                     required
                     sx={{ textAlign: 'left' }}
@@ -414,21 +421,25 @@ const [messageApi, contextHolder] = message.useMessage();
                   '@media (max-width: 600px)': { width: "90%" },
                 }}>
                   <InputLabel id="location-label">
-                    Marriage Status *
+                    Department *
                   </InputLabel>
                   <Select
                     margin="dense"
-                    name="MarriageStatus"
-                    label="Marriage Status"
+                    name="Department"
+                    label="Department"
                     type="text"
                     variant="outlined"
-                    value={formValues.MarriageStatus.value}
+                    value={formValues.Department.value}
                     onChange={handleChange}
                     sx={{ textAlign: 'left' }}
                     required
                   >
-                    <MenuItem value={"Single"}>Single</MenuItem>
-                    <MenuItem value={"Married"}>Married</MenuItem>
+                    <MenuItem value={"6"}>IT</MenuItem>
+                    <MenuItem value={"5"}>CSE</MenuItem>
+                    <MenuItem value={"4"}>Mechanical</MenuItem>
+                    <MenuItem value={"3"}>EEP</MenuItem>
+                    <MenuItem value={"2"}>ENTC</MenuItem>
+                    <MenuItem value={"1"}>CIVIL</MenuItem>
                   </Select>
                 </FormControl>
 
@@ -461,6 +472,8 @@ const [messageApi, contextHolder] = message.useMessage();
                   id="Email"
                   name="Email"
                     value={formValues.Email.value}
+                    error={formValues.Email.error}
+                    helperText={formValues.Email.error && formValues.Email.errorMessage}
                   type="text"
                   label="Email"
                   variant="outlined"
@@ -533,11 +546,11 @@ const [messageApi, contextHolder] = message.useMessage();
                   margin="dense"
                   label="Family income"
                   name="FamilyIncome"
-                    value={formValues.FamilyIncome.value}
+                  value={formValues.FamilyIncome.value}
                   type="text"
                   variant="outlined"
                   defaultValue={"0"}
-                    onChange={handleChange}
+                  onChange={handleChange}
                   required
                 />
                 <FormControl sx={{ m: 1, width: "30%", '@media (max-width: 600px)': { width: "90%" } }}>

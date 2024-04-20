@@ -1,12 +1,12 @@
 import React from 'react'
 import { useState } from "react";
-import { Box} from "@mui/material";
+import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
-import {  CircularProgress,  Backdrop} from "@mui/material";
+import { CircularProgress, Backdrop } from "@mui/material";
 import { message } from 'antd';
 
 
-const ProfAuthentication = () => {    
+const ProfAuthentication = () => {
     const [firstName, setfirstName] = useState("");
     const [lastName, setlastName] = useState("");
     const [email, setEmail] = useState("");
@@ -16,24 +16,29 @@ const ProfAuthentication = () => {
     const [department, setDepartment] = useState("");
     const [page, setPage] = useState("SignUp");
     const [error, setError] = useState("");
-    const [subject,setSubject]=useState("");
-    const [srID,setID]=useState("");
+    const [srID, setID] = useState("");
     const [openProgressBar, setOpenProgressBar] = React.useState(false);
     const [messageApi, contextHolder] = message.useMessage();
+    const pattern = /^[A-Za-z]{4}\d{4}$/;
 
     const success = (response) => {
         messageApi.open({
-          type: 'warning',
-          content: response,
+            type: 'warning',
+            content: response,
         });
-      };
+    };
 
     const Submit = async (event) => {
         setOpenProgressBar(true);
         event.preventDefault();
-        if (!firstName || !lastName || !email || !phone || !department || !password  || !confirmPassword || !subject) {
+        const isValid = pattern.test(srID);
+        if (!firstName || !lastName || !email || !phone || !department || !password || !confirmPassword || !srID) {
             setOpenProgressBar(false);
             setError("Please fill all required field");
+        }
+        else if (!isValid) {
+            setOpenProgressBar(false);
+            setError("Invalid SR_ID")
         }
         else if (password !== confirmPassword) {
             setOpenProgressBar(false);
@@ -44,12 +49,12 @@ const ProfAuthentication = () => {
             setOpenProgressBar(false);
             setError("Password is too short");
         }
-        else if(phone.length !== 10){
+        else if (phone.length !== 10) {
             setOpenProgressBar(false);
             setError("Invalid Mobile number")
         }
         else {
-        
+
             setError("");
             const formdata = {
                 "firstName": firstName,
@@ -58,7 +63,6 @@ const ProfAuthentication = () => {
                 "phoneNumber": phone,
                 "password": password,
                 "department": department,
-                "subject": subject,
                 "SR_ID": srID
             }
 
@@ -81,7 +85,7 @@ const ProfAuthentication = () => {
             else {
                 success("Info submitted for admin verification");
                 setfirstName(""); setlastName(""); setEmail(""); setPhone("");
-                setConfirmPassword(""); setPassword(""); setSubject(""); setDepartment("");
+                setConfirmPassword(""); setPassword(""); setDepartment("");
                 setID("")
 
             }
@@ -109,9 +113,10 @@ const ProfAuthentication = () => {
         setConfirmPassword('');
         setPassword('');
         setDepartment('');
-        setSubject('');
         setID('')
     }
+
+
     return (
         <div>
             <Backdrop
@@ -122,7 +127,7 @@ const ProfAuthentication = () => {
             </Backdrop>
 
             <div>
-            {contextHolder}
+                {contextHolder}
                 <Box
                     component="form"
                     sx={{
@@ -202,30 +207,18 @@ const ProfAuthentication = () => {
                                     required
                                     onChange={(event) => setConfirmPassword(event.target.value)}
                                 />
-                                 <TextField
-                              
-                              margin="dense"
-                              id="subject"
-                              label="Subject"
-                              type="subject"
-                              value={subject}
-                              variant="outlined"
-                              color='success'
-                              required
-                              onChange={(event) => setSubject(event.target.value)}
-                          />
-                          <TextField
-                  
-                              margin="dense"
-                              id="department"
-                              label="Department"
-                              type="Department"
-                              value={department}
-                              variant="outlined"
-                              color='success'
-                              required
-                              onChange={(event) => setDepartment(event.target.value)}
-                          />
+                                <TextField
+                                     style={{ width: "80%" }}
+                                    margin="dense"
+                                    id="department"
+                                    label="Department"
+                                    type="Department"
+                                    value={department}
+                                    variant="outlined"
+                                    color='success'
+                                    required
+                                    onChange={(event) => setDepartment(event.target.value)}
+                                />
                                 <TextField
                                     style={{ width: "80%" }}
                                     margin="dense"
@@ -238,8 +231,8 @@ const ProfAuthentication = () => {
                                     required
                                     onChange={(event) => setID(event.target.value)}
                                 />
-                                
-                               
+
+
                                 <div className='centerized'><p>Aready had an account ?&nbsp; </p><p className='FormBtn2' onClick={ChangePageFunction2}> Log In</p></div>
                                 <button className='FormBtn' onClick={Submit}>Sign Up</button>
                             </div>
@@ -289,7 +282,7 @@ const ProfAuthentication = () => {
                             </div>
 
                         )}
-                        <p style={{color:"red"}}>{error}</p>
+                        <p style={{ color: "red" }}>{error}</p>
                     </div>
 
                 </Box>
