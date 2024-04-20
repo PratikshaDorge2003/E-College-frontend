@@ -26,7 +26,7 @@ const ProfessorHomePage=React.memo(()=>{
             </div>
             <div className='bottomDiv centerized'>
               <h5>Create an Account</h5>
-              <p> Fill out the required fields accurately to create your admin account</p>
+              <p> Fill out the required fields accurately to create your account</p>
 
             </div>
 
@@ -67,7 +67,7 @@ const ProfessorHomePage=React.memo(()=>{
             </div>
             <div className='bottomDiv centerized'>
               <h5>Confirmation and Access</h5>
-              <p> You will receive a confirmation message and admin can now access features </p>
+              <p> You will receive a confirmation message and professor can now access features </p>
 
             </div>
 

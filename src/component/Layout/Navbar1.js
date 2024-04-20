@@ -23,6 +23,10 @@ const Navbar = (props) => {
         navigate("/professor/authentication");
     }
 
+    const navigateStudent=()=>{
+        navigate("/student/authentication")
+    }
+
     return (
         <Box sx={{ flexGrow: 1 }} >
             <AppBar position="static" sx={{ backgroundColor: '#0aa8ad' }}>
@@ -32,6 +36,7 @@ const Navbar = (props) => {
                     </Typography>
                     <div className='NavBtn-Div centerized'><button className='NavBtn' onClick={navigateAdmin}>Admin Login</button></div>
                     <div className='NavBtn-Div centerized'><button className='NavBtn' onClick={navigateProfessor}>Professor Registration</button></div>
+                    <div className='NavBtn-Div centerized'><button className='NavBtn' onClick={navigateStudent}>Student Login</button></div>
 
 
                 </Toolbar>

@@ -11,11 +11,12 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import profile from "../../assets/Profile2.png";
-import Alert from '@mui/material/Alert';
 import dayjs from 'dayjs';
+import { message } from 'antd';
 
 
 const StudentRegister = () => {
+const [messageApi, contextHolder] = message.useMessage();
   const [selectedImage, setSelectedImage] = useState(null);
   const [file, setFile] = useState("");
   const [error, setError] = useState(null);
@@ -146,6 +147,14 @@ const StudentRegister = () => {
 
   };
 
+  const success = (response) => {
+    messageApi.open({
+      type: 'success',
+      content: response,
+    });
+  };
+
+
 
 
   const resetFunction=()=>{
@@ -224,11 +233,9 @@ const StudentRegister = () => {
       })
         const responseData = await response.json(); 
         if(!responseData.error){
-          setOpen(true)
+          success("successfully registered")
         }
-        setTimeout(() => {
-          setOpen(false);
-      }, 3000);
+      
       
         setFormValues(intialState);
 
@@ -243,7 +250,7 @@ const StudentRegister = () => {
           Student Details
         </h2>
       </div>
-    
+     {contextHolder}
       <Grid container mt={5}>
         <Grid container justifyContent="center" alignItems="center" item xs={16} sm={9} order={{ xs: 2, sm: 1 }}>
           <Box
@@ -288,7 +295,7 @@ const StudentRegister = () => {
 
                 <TextField
                   margin="dense"
-                  label="SR ID"
+                  label="Enrollment Number"
                   name="SR_ID"
                   value={formValues.SR_ID.value}
                   error={formValues.SR_ID.error}
@@ -680,8 +687,6 @@ const StudentRegister = () => {
 
         </Grid>
       </Grid>
-       
-     <div style={{ margin: "2%" }}>{open ?<Alert severity="success"> Successfully registered</Alert> : <></>}</div> 
       <div style={{ margin: "2%" }}>
         <Button variant="contained" style={{ margin: "0px 10px" }} onClick={Submit}>Save</Button>
         <Button variant="contained" color="error" onClick={resetFunction}>Reset</Button>

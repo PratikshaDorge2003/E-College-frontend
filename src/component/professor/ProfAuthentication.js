@@ -1,36 +1,37 @@
 import React from 'react'
-
 import { useState } from "react";
-import {
-    Box,
-} from "@mui/material";
+import { Box} from "@mui/material";
 import TextField from "@mui/material/TextField";
-import {
-    CircularProgress,
-    Backdrop
-} from "@mui/material";
+import {  CircularProgress,  Backdrop} from "@mui/material";
+import { message } from 'antd';
 
 
-const ProfAuthentication = () => {
-    console.log('VendorA is rendering...');
+const ProfAuthentication = () => {    
     const [firstName, setfirstName] = useState("");
     const [lastName, setlastName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [section, setSection] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [department, setDepartment] = useState("");
     const [page, setPage] = useState("SignUp");
     const [error, setError] = useState("");
-    const[srID,setID]=useState("");
+    const [subject,setSubject]=useState("");
+    const [srID,setID]=useState("");
     const [openProgressBar, setOpenProgressBar] = React.useState(false);
+    const [messageApi, contextHolder] = message.useMessage();
+
+    const success = (response) => {
+        messageApi.open({
+          type: 'warning',
+          content: response,
+        });
+      };
 
     const Submit = async (event) => {
         setOpenProgressBar(true);
         event.preventDefault();
-        
-
-        if (!firstName || !lastName || !email || !phone || !section || !password  || !confirmPassword) {
+        if (!firstName || !lastName || !email || !phone || !department || !password  || !confirmPassword || !subject) {
             setOpenProgressBar(false);
             setError("Please fill all required field");
         }
@@ -56,10 +57,12 @@ const ProfAuthentication = () => {
                 "email": email,
                 "phoneNumber": phone,
                 "password": password,
-                "section": section,
+                "department": department,
+                "subject": subject,
+                "SR_ID": srID
             }
 
-            const response = await fetch("http://localhost:3002/admin/register", {
+            const response = await fetch("http://localhost:3002/professor/register", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,14 +79,12 @@ const ProfAuthentication = () => {
                 setError(result.error)
             }
             else {
-                setError("Successfully registered");
-                setfirstName(""); setlastName(""); setSection(""); setEmail(""); setPhone("");
-                setConfirmPassword(""); setPassword("");
+                success("Info submitted for admin verification");
+                setfirstName(""); setlastName(""); setEmail(""); setPhone("");
+                setConfirmPassword(""); setPassword(""); setSubject(""); setDepartment("");
+                setID("")
 
             }
-
-
-
         }
     }
 
@@ -94,7 +95,6 @@ const ProfAuthentication = () => {
         setlastName('');
         setEmail('');
         setPhone('');
-        setSection('');
         setConfirmPassword('');
 
 
@@ -108,6 +108,9 @@ const ProfAuthentication = () => {
         setPhone('');
         setConfirmPassword('');
         setPassword('');
+        setDepartment('');
+        setSubject('');
+        setID('')
     }
     return (
         <div>
@@ -119,6 +122,7 @@ const ProfAuthentication = () => {
             </Backdrop>
 
             <div>
+            {contextHolder}
                 <Box
                     component="form"
                     sx={{
@@ -198,6 +202,30 @@ const ProfAuthentication = () => {
                                     required
                                     onChange={(event) => setConfirmPassword(event.target.value)}
                                 />
+                                 <TextField
+                              
+                              margin="dense"
+                              id="subject"
+                              label="Subject"
+                              type="subject"
+                              value={subject}
+                              variant="outlined"
+                              color='success'
+                              required
+                              onChange={(event) => setSubject(event.target.value)}
+                          />
+                          <TextField
+                  
+                              margin="dense"
+                              id="department"
+                              label="Department"
+                              type="Department"
+                              value={department}
+                              variant="outlined"
+                              color='success'
+                              required
+                              onChange={(event) => setDepartment(event.target.value)}
+                          />
                                 <TextField
                                     style={{ width: "80%" }}
                                     margin="dense"
@@ -210,18 +238,8 @@ const ProfAuthentication = () => {
                                     required
                                     onChange={(event) => setID(event.target.value)}
                                 />
-                                <TextField
-                                    style={{ width: "80%" }}
-                                    margin="dense"
-                                    id="Section"
-                                    label="Department"
-                                    type="Section"
-                                    value={section}
-                                    variant="outlined"
-                                    color='success'
-                                    required
-                                    onChange={(event) => setSection(event.target.value)}
-                                />
+                                
+                               
                                 <div className='centerized'><p>Aready had an account ?&nbsp; </p><p className='FormBtn2' onClick={ChangePageFunction2}> Log In</p></div>
                                 <button className='FormBtn' onClick={Submit}>Sign Up</button>
                             </div>
@@ -233,8 +251,8 @@ const ProfAuthentication = () => {
                                 <TextField
                                     style={{ width: "80%" }}
                                     margin="dense"
-                                    id="phone"
-                                    label="Mobile No"
+                                    id="userName"
+                                    label="UserName"
                                     type="phone"
                                     value={phone}
                                     variant="outlined"
@@ -265,18 +283,6 @@ const ProfAuthentication = () => {
                                     color='success'
                                     required
                                     onChange={(event) => setPassword(event.target.value)}
-                                />
-                                <TextField
-                                    style={{ width: "80%" }}
-                                    margin="dense"
-                                    id="password"
-                                    label="Confirm Password"
-                                    type="password"
-                                    value={confirmPassword}
-                                    variant="outlined"
-                                    color='success'
-                                    required
-                                    onChange={(event) => setConfirmPassword(event.target.value)}
                                 />
                                 <div className='centerized'><p>Create New Account&nbsp;&nbsp; </p><p className='FormBtn2' onClick={ChangePageFunction1}> Sign In</p></div>
                                 <button className='FormBtn'>Log In</button>

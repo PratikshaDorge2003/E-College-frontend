@@ -16,6 +16,9 @@ import ProfessorHomePage from './component/professor/ProfessorHomePage';
 import AdminFunction from './component/admin/AdminFunctions';
 import StudentRegister from './component/admin/StudentRegister';
 import DocumentUpload from './component/admin/UploadDoc';
+import StudentAuthentication from './component/student/StudentAuthentication';
+import { ProfessorApproval } from './component/admin/ProfessorApproval';
+import SearchStudent from './component/admin/SearchStudent';
 
 
  const App =()=> {
@@ -32,6 +35,9 @@ import DocumentUpload from './component/admin/UploadDoc';
             <Route exact path="/admin/features" element={ <AdminFunction/>}/>
             <Route exact path="/admin/register" element={ <StudentRegister/>}/>
             <Route exact path="/admin/upload-doc" element={ <DocumentUpload/>}/>
+            <Route exact path="/admin/prof-approval" element={ <ProfessorApproval/>}/>
+            <Route exact path="/admin/search-student" element={ <SearchStudent/>}/>
+            <Route exact path="/student/authentication" element={ <StudentAuthentication/>}/>
           </Routes>
         </Router>
       </div>

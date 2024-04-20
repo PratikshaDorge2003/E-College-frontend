@@ -14,6 +14,14 @@
   background-color: #ffffffec;
 }
 
+.profContainer{
+  width: 70%;
+  background-color: rgb(238, 232, 232);
+  padding: 40px;
+  color: #000000;
+  margin-bottom: 20px;
+}
+
 .notice{
   height: 80px;
   width: 80%;
