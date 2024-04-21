@@ -8,6 +8,44 @@ import { useNavigate } from 'react-router-dom';
 const StudentAuthentication = () => {
     const[userName,setUserName]=useState("");
     const[password,setPassword]=useState("");
+    const [error, setError] = useState("");
+    const navigate = useNavigate();
+
+    const Submit =async(event)=>{
+        event.preventDefault();
+        if(!userName || !password){
+            setError("Fill all the required fields")
+        }
+        else{
+        const formData={
+            userName:userName,
+            password : password
+        }
+
+          const response = await fetch("http://localhost:3002/student/login", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+
+                },
+                body: JSON.stringify(formData),
+
+            });
+            const result = await response.json();
+
+            if (result.error) {
+                setError(result.error)
+            }
+            else {
+                navigate("/student/features");
+                localStorage.setItem('username', formData.userName);
+                setUserName("");
+                setPassword("");
+
+            }
+        }
+
+    }
   return (
     <div>
 
@@ -47,8 +85,10 @@ const StudentAuthentication = () => {
                             required
                             onChange={(event) => setPassword(event.target.value)}
                         />
-                           <button className='FormBtn'>Log In</button>
+                           <button className='FormBtn' onClick={Submit}>Log In</button>
                     </div>
+
+                    <p style={{ color: "red" }}>{error}</p>
                    
             </div>
 

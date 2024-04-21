@@ -3,6 +3,7 @@ import register from "../../assets/register.png";
 import upload from "../../assets/upload.png";
 import verification from "../../assets/verification.png";
 import searchStudent from "../../assets/searchStudent.png";
+import approval from "../../assets/approval2.png";
 import Icons from "../Layout/Icons";
 import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
@@ -24,7 +25,9 @@ export default function AdminFunction() {
           <Icons img={upload} name={"Upload Notice"} route={"/admin/upload-doc"} />
           <Icons img={verification} name={"Professor Approval"} route={"/admin/prof-approval"} />
           <Icons img={register} name={"Student Register"} route={"/admin/register"} />
+          <Icons img={approval} name={"Bonafide Approval"} route={"/admin/bonafide-approval"} />
           <Icons img={searchStudent} name={"Search Student"} route={"/admin/search-student"} />
+         
         </Stack>
 
       </Container>
