@@ -22,7 +22,8 @@ import SearchStudent from './component/admin/SearchStudent';
 import StudentFunction from './component/student/StudentFunction';
 import BonafideRequest from './component/student/BonafideRequest';
 import BonafideApproval from './component/admin/BonafideApproval';
-
+import ProfessorFunction from './component/professor/ProfessorFunction';
+import StudentList from './component/professor/StudentList';
 
 
  const App =()=> {
@@ -45,6 +46,9 @@ import BonafideApproval from './component/admin/BonafideApproval';
             <Route exact path="/student/features" element={ <StudentFunction/>}/>
             <Route exact path="/student/bonafide-request" element={ <BonafideRequest/>}/>
             <Route exact path="/admin/bonafide-approval" element={ <BonafideApproval/>}/>
+            <Route exact path="/professor/features" element={ <ProfessorFunction/>}/>
+            <Route exact path="/professor/student-list" element={ <StudentList/>}/>
+           
           </Routes>
         </Router>
       </div>

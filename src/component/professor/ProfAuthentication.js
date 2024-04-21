@@ -4,7 +4,8 @@ import { Box } from "@mui/material";
 import TextField from "@mui/material/TextField";
 import { CircularProgress, Backdrop } from "@mui/material";
 import { message } from 'antd';
-
+import {FormControl, InputLabel, Select, MenuItem } from '@mui/material'
+import { useNavigate, useNavigation } from 'react-router-dom';
 
 const ProfAuthentication = () => {
     const [firstName, setfirstName] = useState("");
@@ -17,9 +18,12 @@ const ProfAuthentication = () => {
     const [page, setPage] = useState("SignUp");
     const [error, setError] = useState("");
     const [srID, setID] = useState("");
+    const[userName,setUserName]=useState("");
+    const[password2,setPassword2]=useState("");
     const [openProgressBar, setOpenProgressBar] = React.useState(false);
     const [messageApi, contextHolder] = message.useMessage();
     const pattern = /^[A-Za-z]{4}\d{4}$/;
+    const navigate = useNavigate();
 
     const success = (response) => {
         messageApi.open({
@@ -92,6 +96,43 @@ const ProfAuthentication = () => {
         }
     }
 
+    const loginFunction=async (event)=>{
+            event.preventDefault();
+            if(!userName || !password2){
+                setError("Fill all the required fields")
+            }
+            else{
+            const formData={
+                userName:userName,
+                password : password2
+            }
+    
+              const response = await fetch("http://localhost:3002/professor/login", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+    
+                    },
+                    body: JSON.stringify(formData),
+    
+                });
+                const result = await response.json();
+    
+                if (result.error) {
+                    setError(result.error)
+                }
+                else {
+                    navigate("/professor/features");
+                    localStorage.setItem('username', formData.userName);
+                    setUserName("");
+                    setPassword("");
+    
+                }
+            }
+    
+        
+    }
+
 
     const ChangePageFunction2 = () => {
         setPage("LogIn");
@@ -115,6 +156,8 @@ const ProfAuthentication = () => {
         setDepartment('');
         setID('')
     }
+
+
 
 
     return (
@@ -207,18 +250,32 @@ const ProfAuthentication = () => {
                                     required
                                     onChange={(event) => setConfirmPassword(event.target.value)}
                                 />
-                                <TextField
-                                     style={{ width: "80%" }}
-                                    margin="dense"
-                                    id="department"
-                                    label="Department"
-                                    type="Department"
-                                    value={department}
-                                    variant="outlined"
-                                    color='success'
-                                    required
-                                    onChange={(event) => setDepartment(event.target.value)}
-                                />
+                                <FormControl sx={{
+                                    m: 1, width: "80%",
+                                    '@media (max-width: 600px)': { width: "90%" },
+                                }}>
+                                    <InputLabel id="location-label">
+                                        Department *
+                                    </InputLabel>
+                                    <Select
+                                        margin="dense"
+                                        name="Department"
+                                        label="Department"
+                                        type="text"
+                                        variant="outlined"
+                                        value={department}
+                                        onChange={(event) => setDepartment(event.target.value)}
+                                        sx={{ textAlign: 'left' }}
+                                        required
+                                    >
+                                        <MenuItem value={"6"}>IT</MenuItem>
+                                        <MenuItem value={"5"}>CSE</MenuItem>
+                                        <MenuItem value={"4"}>Mechanical</MenuItem>
+                                        <MenuItem value={"3"}>EEP</MenuItem>
+                                        <MenuItem value={"2"}>ENTC</MenuItem>
+                                        <MenuItem value={"1"}>CIVIL</MenuItem>
+                                    </Select>
+                                </FormControl>
                                 <TextField
                                     style={{ width: "80%" }}
                                     margin="dense"
@@ -246,24 +303,12 @@ const ProfAuthentication = () => {
                                     margin="dense"
                                     id="userName"
                                     label="UserName"
-                                    type="phone"
-                                    value={phone}
+                                    type="userName"
+                                    value={userName}
                                     variant="outlined"
                                     color='success'
                                     required
-                                    onChange={(event) => setPhone(event.target.value)}
-                                />
-                                <TextField
-                                    style={{ width: "80%" }}
-                                    margin="dense"
-                                    id="email"
-                                    label="Email"
-                                    type="phone"
-                                    value={email}
-                                    variant="outlined"
-                                    color='success'
-                                    required
-                                    onChange={(event) => setEmail(event.target.value)}
+                                    onChange={(event) => setUserName(event.target.value)}
                                 />
                                 <TextField
                                     style={{ width: "80%" }}
@@ -271,14 +316,14 @@ const ProfAuthentication = () => {
                                     id="password"
                                     label="Password"
                                     type="password"
-                                    value={password}
+                                    value={password2}
                                     variant="outlined"
                                     color='success'
                                     required
-                                    onChange={(event) => setPassword(event.target.value)}
+                                    onChange={(event) => setPassword2(event.target.value)}
                                 />
                                 <div className='centerized'><p>Create New Account&nbsp;&nbsp; </p><p className='FormBtn2' onClick={ChangePageFunction1}> Sign In</p></div>
-                                <button className='FormBtn'>Log In</button>
+                                <button className='FormBtn' onClick={(e)=>loginFunction(e)}>Log In</button>
                             </div>
 
                         )}
