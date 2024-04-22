@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
 
 const StudentList = () => {
-    const[detail,setDetail]=useState("");
+    const [detail, setDetail] = useState([]);
     useEffect(()=>{
         fetchData();
     })
     const fetchData=async()=>{
         const formData={
-            userName: localStorage.getItem('username')
+            userName: localStorage.getItem('professor')
         }
         const response = await fetch("http://localhost:3002/professor/getStudent", {
             method: 'POST',
@@ -18,9 +18,14 @@ const StudentList = () => {
         })
 
         const data = await response.json();
-        setDetail(data.data);
-        console.log(data);
+        if (Array.isArray(data.data)) {
+            setDetail(data.data);
+        } else {
+            setDetail([]);
+        }
     }
+
+    
   return (
     <div className="centerized" style={{flexDirection:"column", margin:"20px"}}>
         <h5>STUDENT LIST</h5>

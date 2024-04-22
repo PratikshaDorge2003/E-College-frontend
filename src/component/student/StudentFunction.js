@@ -20,8 +20,8 @@ export default function StudentFunction() {
       </div>
       <Container sx={{ marginTop: 10 }}>
         <Stack spacing={10} direction={"row"} >
-        <Icons img={professor} name={"Course & Prof"} route={"/student/bonafide-request"} />
-          <Icons img={bonafide} name={"Bonafide Request"} route={"/student/course-list"} />
+        <Icons img={professor} name={"Course & Prof"} route={"/student/course-list"} />
+          <Icons img={bonafide} name={"Bonafide Request"} route={"/student/bonafide-request"} />
 
         </Stack>
 

@@ -25,6 +25,7 @@ import BonafideApproval from './component/admin/BonafideApproval';
 import ProfessorFunction from './component/professor/ProfessorFunction';
 import StudentList from './component/professor/StudentList';
 import GetSubject from './component/professor/getSubject';
+import CourseList from './component/student/CourseList';
 
 
 
@@ -51,6 +52,7 @@ import GetSubject from './component/professor/getSubject';
             <Route exact path="/professor/features" element={ <ProfessorFunction/>}/>
             <Route exact path="/professor/student-list" element={ <StudentList/>}/>
             <Route exact path="/professor/select-subject" element={<GetSubject/>}/>
+            <Route exact path="/student/course-list" element={<CourseList/>}/>
           
           </Routes>
         </Router>

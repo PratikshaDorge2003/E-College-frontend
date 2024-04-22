@@ -123,7 +123,7 @@ const ProfAuthentication = () => {
                 }
                 else {
                     navigate("/professor/features");
-                    localStorage.setItem('username', formData.userName);
+                    localStorage.setItem('professor', formData.userName);
                     setUserName("");
                     setPassword("");
     

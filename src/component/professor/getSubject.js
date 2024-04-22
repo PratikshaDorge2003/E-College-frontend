@@ -28,7 +28,7 @@ function GetSubject() {
 
     const fetchData = async () => {
         const formData = {
-            userName: localStorage.getItem('username')
+            userName: localStorage.getItem('professor')
         }
         const response = await fetch("http://localhost:3002/professor/getSubject", {
             method: 'POST',
@@ -119,7 +119,7 @@ function GetSubject() {
 
             const formData = {
                 subjects: subjects,
-                userName: localStorage.getItem('username')
+                userName: localStorage.getItem('professor')
             }
             const response = await fetch("http://localhost:3002/professor/assign-Subject", {
                 method: 'POST',
@@ -130,6 +130,7 @@ function GetSubject() {
                 body: JSON.stringify(formData),
 
             });
+            
             const result = await response.json();
             console.log(result);
             fetchData();
