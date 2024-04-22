@@ -362,3 +362,27 @@ color: white;
   border:1px solid black;
   border-collapse: collapse;
 }
+
+.subjectName{
+  width:30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+}
+
+.statusName{
+  width:30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+
+}
+.selectButton{
+width:40%;
+display: flex;
+justify-content: center;
+align-items: center;
+
+}

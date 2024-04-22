@@ -3,6 +3,7 @@ import Icons from "../Layout/Icons";
 import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import bonafide from "../../assets/bonafide.png";
+import professor from "../../assets/professor.png";
 
 
 export default function StudentFunction() {
@@ -19,7 +20,9 @@ export default function StudentFunction() {
       </div>
       <Container sx={{ marginTop: 10 }}>
         <Stack spacing={10} direction={"row"} >
-          <Icons img={bonafide} name={"Bonafide Request"} route={"/student/bonafide-request"} />
+        <Icons img={professor} name={"Course & Prof"} route={"/student/bonafide-request"} />
+          <Icons img={bonafide} name={"Bonafide Request"} route={"/student/course-list"} />
+
         </Stack>
 
       </Container>

@@ -3,6 +3,7 @@ import Icons from "../Layout/Icons";
 import { useNavigate } from 'react-router-dom';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import student from "../../assets/studentList.png";
+import subject from "../../assets/subjects.png";
 
 
 export default function ProfessorFunction() {
@@ -19,6 +20,7 @@ export default function ProfessorFunction() {
       </div>
       <Container sx={{ marginTop: 10 }}>
         <Stack spacing={10} direction={"row"} >
+          <Icons img={subject} name={"Select Subject"} route={"/professor/select-subject"} />
           <Icons img={student} name={"Student List"} route={"/professor/student-list"} />
         </Stack>
 
