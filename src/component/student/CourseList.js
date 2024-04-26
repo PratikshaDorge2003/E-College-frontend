@@ -7,7 +7,7 @@ import List from '@mui/material/List';
 
 function CourseList() {
     const [detail, setDetail] = useState("");
-    const [professor, setProfessor] = useState("");
+    const [professor, setProfessor] = useState([]);
     const [open, setOpen] = React.useState(false);
 
     const toggleDrawer = (newOpen) => () => {
@@ -17,7 +17,7 @@ function CourseList() {
 
     useEffect(() => {
         fetchData();
-   
+        professorData();
 
     }, [])
 
@@ -40,21 +40,26 @@ function CourseList() {
         setDetail(data.data);
     }
 
-    // const professorData = async () => {
-    //     const formData = {
-    //         userName: localStorage.getItem('username')
-    //     }
-    //     const response = await fetch("http://localhost:3002/student/getSubject", {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: JSON.stringify(formData)
-    //     })
+    const professorData = async () => {
+        const formData = {
+            userName: localStorage.getItem('username')
+        }
+        const response = await fetch("http://localhost:3002/student/getProfessor", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+        })
 
-    //     const data = await response.json();
-    //     setDetail(data.data);
-    // }
+        const data = await response.json();
+        setProfessor(data.data);
+        if (Array.isArray(data.data)) {
+            setProfessor(data.data);
+        } else {
+            setProfessor([]);
+        }
+    }
 
     return (
         <div className='centerized' style={{ flexDirection: "column" }}>
@@ -69,7 +74,18 @@ function CourseList() {
                     <div style={{margin:"30px 60px"}}>5. {detail.subject5.name}</div>
                 </div>:<></>}
             </Drawer>
-            <h5>ProfessorList</h5>
+            <h4>Professor List</h4>
+            <div>
+                {professor ? professor.map((student, index) => (
+                    <div key={index} style={{padding:"10px", border:"1px solid black", width:"600px", margin:"30px"}}>
+                       <h6> Name of Professor : {student.firstName + " "} {student.lastName}</h6>
+                       <h6> Subject :{student.subject? student.subject : " NOT REGISTERED TO ANY SUBJECT"}</h6>
+                        
+                    </div>
+                )):<><div>No professor registered</div></>}
+            </div>
+            
+            
 
 
 

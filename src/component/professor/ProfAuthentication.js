@@ -12,8 +12,8 @@ const ProfAuthentication = () => {
     const [lastName, setlastName] = useState("");
     const [email, setEmail] = useState("");
     const [phone, setPhone] = useState("");
-    const [password, setPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    const [password, setPassword] = useState("12345678");
+    const [confirmPassword, setConfirmPassword] = useState("12345678");
     const [department, setDepartment] = useState("");
     const [page, setPage] = useState("SignUp");
     const [error, setError] = useState("");
@@ -227,28 +227,6 @@ const ProfAuthentication = () => {
                                     color='success'
                                     required
                                     onChange={(event) => setEmail(event.target.value)}
-                                />
-                                <TextField
-                                    margin="dense"
-                                    id="password"
-                                    label="Password"
-                                    type="password"
-                                    value={password}
-                                    variant="outlined"
-                                    color='success'
-                                    required
-                                    onChange={(event) => setPassword(event.target.value)}
-                                />
-                                <TextField
-                                    margin="dense"
-                                    id="confirmPassword"
-                                    label="Confirm Password"
-                                    type="password"
-                                    value={confirmPassword}
-                                    variant="outlined"
-                                    color='success'
-                                    required
-                                    onChange={(event) => setConfirmPassword(event.target.value)}
                                 />
                                 <FormControl sx={{
                                     m: 1, width: "80%",
